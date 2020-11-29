@@ -8,10 +8,16 @@ namespace ForceStepConstants
 {
         public static class BreakpointStatusCodes
         {
-            public static string Suspended = "[s]";
+            public static string SuspendedManually = "[s]";
             public static string SuspendedFromStep = "[step]";
             public static string Active = "";
-        }
+       }
+
+        public enum SaveBreakpointReason
+    {
+        ForceStep = 0,
+        Manual = 1
+    }
 
 }
 

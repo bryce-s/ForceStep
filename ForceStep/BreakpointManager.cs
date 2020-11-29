@@ -19,7 +19,7 @@ namespace ForceStep
             m_package = package;
         }
 
-        private void SuspendBreakpoints()
+        private void SuspendBreakpoints(string statusCode)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
@@ -29,7 +29,7 @@ namespace ForceStep
             {
                 if (bp.Enabled)
                 {
-                    bp.Tag = BreakpointStatusCodes.Suspended;
+                    bp.Tag = statusCode;
                     bp.Enabled = false;
                 }
             }
@@ -43,7 +43,7 @@ namespace ForceStep
 
             foreach (EnvDTE.Breakpoint bp in dte.Debugger.Breakpoints)
             {
-                if (bp.Tag == BreakpointStatusCodes.Suspended)
+                if (bp.Tag == BreakpointStatusCodes.SuspendedManually)
                 {
                     bp.Tag = BreakpointStatusCodes.Active;
                     bp.Enabled = true;
@@ -52,9 +52,16 @@ namespace ForceStep
         }
 
 
-        public void SaveActiveBreakpoints()
+        public void SaveAndSuspendActiveBreakpoints(SaveBreakpointReason reason)
         {
-            SuspendBreakpoints();
+            if (reason == SaveBreakpointReason.ForceStep)
+            {
+                SuspendBreakpoints(BreakpointStatusCodes.SuspendedFromStep);
+            }
+            if (reason == SaveBreakpointReason.Manual)
+            {
+                SuspendBreakpoints(BreakpointStatusCodes.SuspendedManually);
+            }
         }
 
         public void RestoreSavedBreakpoints()
