@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForceStep", "ForceStep.csproj", "{C9E68AD6-7E3D-4D3B-81C1-814ABAA32362}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForceStep", "ForceStep\ForceStep.csproj", "{EC2BF75C-D024-4153-A3EE-4C225207E087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9E68AD6-7E3D-4D3B-81C1-814ABAA32362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9E68AD6-7E3D-4D3B-81C1-814ABAA32362}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9E68AD6-7E3D-4D3B-81C1-814ABAA32362}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9E68AD6-7E3D-4D3B-81C1-814ABAA32362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC2BF75C-D024-4153-A3EE-4C225207E087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2BF75C-D024-4153-A3EE-4C225207E087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2BF75C-D024-4153-A3EE-4C225207E087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2BF75C-D024-4153-A3EE-4C225207E087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D0C5200F-55DB-4BB6-9472-AFD63A26BAFA}
+		SolutionGuid = {182343AF-3519-491F-8761-1B8CC4F935B2}
 	EndGlobalSection
 EndGlobal
