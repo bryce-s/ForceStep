@@ -13,6 +13,20 @@ namespace ForceStepConstants
         public static string SuspendedFromStepOut = "[sout]";
         public static string SuspendedFromContinue = "[continue]";
         public static string Active = "";
+
+        private static List<string> StepOperations = null;
+
+        public static List<string> SuspendedFromOperation()
+        {
+            if (StepOperations == null)
+            {
+                StepOperations = new List<string>();
+                StepOperations.Add(SuspendedFromStep);
+                StepOperations.Add(SuspendedFromStepOut);
+                StepOperations.Add(SuspendedFromContinue);
+            }
+            return StepOperations;
+        } 
     }
 
     public enum SaveBreakpointReason

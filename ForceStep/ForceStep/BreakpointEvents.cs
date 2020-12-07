@@ -16,6 +16,7 @@ namespace ForceStep
         public static EnvDTE.DTE m_Dte = null;
         public static DebuggerEvents m_debuggerEvents;
         public static SolutionEvents m_solutionEvents;
+        private static AsyncPackage m_package;
 
         /// <summary>
         /// get the singleton instance of the breakpoint events object
@@ -39,6 +40,7 @@ namespace ForceStep
         public static void InitalizeBreakpointEvents(AsyncPackage package)
         {
             m_Instance = new BreakpointEvents(dte: UtilityMethods.GetDTE(package));
+            m_package = package;
         }
 
         private static BreakpointEvents m_Instance = null;
@@ -53,9 +55,10 @@ namespace ForceStep
             m_debuggerEvents = dte.Events.DebuggerEvents;
             m_debuggerEvents.OnEnterBreakMode += this.OnEnterBreakMode;
             m_debuggerEvents.OnEnterDesignMode += this.OnEnterDesignMode;
-        
-            m_solutionEvents = dte.Events.SolutionEvents;
-            m_solutionEvents.Opened += this.OnSolutionOpened;
+
+            // m_solutionEvents = dte.Events.SolutionEvents;
+            // m_solutionEvents.Opened += this.OnSolutionOpened;
+            SolutionOpenedImpl();
         }
 
         // add the following Event handler code   
@@ -92,19 +95,35 @@ namespace ForceStep
 
         private void SolutionOpenedImpl()
         {
-               
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BreakpointManager bpm = new BreakpointManager(package: m_package);
+            bpm.DisableSuspendedFromOperationBreakpoints();
         }
 
         private void OnEnterDesignMode(dbgEventReason reason)
         {
-            // if from continue, or other bpset reason, then we're going to disable them.
-
-
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BreakpointManager bpm = new BreakpointManager(package: m_package);
+            bpm.DisableSuspendedFromOperationBreakpoints();
         }
 
 
+        #region Breakpoints
 
+        private void DisableSuspendedFromOperationBreakpoints()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            foreach (Breakpoint bp in m_Dte.Debugger.Breakpoints)
+            {
+                if (BreakpointStatusCodes.SuspendedFromOperation().Contains(bp.Tag))
+                {
+                    bp.Enabled = true;
+                    bp.Tag = "";
+                }
+            }
+        }
 
+        #endregion
     }
 }
 

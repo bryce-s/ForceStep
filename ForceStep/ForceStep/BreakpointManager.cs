@@ -13,10 +13,29 @@ namespace ForceStep
     {
 
         private readonly AsyncPackage m_package;
-
         public BreakpointManager(AsyncPackage package)
         {
             m_package = package;
+        }
+
+        /// <summary>
+        /// clears and re-enables all breakpoints set by set or continue operations.
+        /// need to run on mode change.
+        /// </summary>
+        public void DisableSuspendedFromOperationBreakpoints()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            var dte = UtilityMethods.GetDTE(m_package);
+
+            foreach (Breakpoint bp in dte.Debugger.Breakpoints)
+            {
+                if (BreakpointStatusCodes.SuspendedFromOperation().Contains(bp.Tag))
+                {
+                    bp.Enabled = true;
+                    bp.Tag = "";
+                }
+            }
         }
 
         private void SuspendBreakpoints(string statusCode)

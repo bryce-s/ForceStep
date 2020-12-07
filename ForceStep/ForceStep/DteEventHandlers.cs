@@ -15,7 +15,7 @@ namespace ForceStep
         /// </summary>
         public static void OnSolutionOpened()
         {
-            Console.WriteLine("brr");
+            Console.WriteLine("i");
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace ForceStep
         {
             Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             //ForceStepPackage.m_Dte.Events.DebuggerEvents.OnEnterBreakMode -= OnEnterBreakMode;
-            MessageBox.Show("hey");
+            MessageBox.Show("i");
 
         }
 
