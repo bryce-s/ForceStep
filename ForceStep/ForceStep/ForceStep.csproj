@@ -48,6 +48,7 @@
     <Compile Include="BreakpointEvents.cs" />
     <Compile Include="BreakpointManager.cs" />
     <Compile Include="DteEventHandlers.cs" />
+    <Compile Include="ForceContinue.cs" />
     <Compile Include="ForceStep.cs" />
     <Compile Include="ForceStepConstants.cs" />
     <Compile Include="ForceStepOut.cs" />
@@ -81,11 +82,12 @@
   <ItemGroup>
     <VSCTCompile Include="ForceStepPackage.vsct">
       <Generator>VsctGenerator</Generator>
-      <ResourceName>Menus.ctmenu</ResourceName>
+      <ResourceName>Menus1.ctmenu</ResourceName>
       <LastGenOutput>ForceStepPackage1.cs</LastGenOutput>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\ForceContinue.png" />
     <Content Include="Resources\ForceStepOut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

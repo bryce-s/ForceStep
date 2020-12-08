@@ -15,10 +15,10 @@ namespace ForceStep
         public const string guidForceStepPackageString = "3d735e2d-9fd5-4f6f-91b3-eb8f318b05e1";
         public static Guid guidForceStepPackage = new Guid(guidForceStepPackageString);
 
-        public const string guidForceStepPackageCmdSetString = "22f33e59-0867-4f98-ae3c-b2ca2fe0222a";
+        public const string guidForceStepPackageCmdSetString = "466498cc-0795-4718-bcb7-98dc3982eb39";
         public static Guid guidForceStepPackageCmdSet = new Guid(guidForceStepPackageCmdSetString);
 
-        public const string guidImagesString = "18a739b1-142f-4228-87e1-fc19e0f4dc73";
+        public const string guidImagesString = "c62a1fac-65b1-407e-8309-7b73bb72e06c";
         public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>
@@ -27,7 +27,7 @@ namespace ForceStep
     internal sealed partial class PackageIds
     {
         public const int MyMenuGroup = 0x1020;
-        public const int ForceStepOutId = 0x0100;
+        public const int ForceContinueId = 0x0100;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;

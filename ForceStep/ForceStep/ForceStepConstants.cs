@@ -33,7 +33,8 @@ namespace ForceStepConstants
     {
         Manual = 0,
         ForceStep = 1,
-        ForceStepOut = 2
+        ForceStepOut = 2,
+        ForceContinue = 3,
     }
 
 }

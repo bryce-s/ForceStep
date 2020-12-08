@@ -81,6 +81,10 @@ namespace ForceStep
             {
                 SuspendBreakpoints(BreakpointStatusCodes.SuspendedFromStepOut);
             }
+            if (reason == SaveBreakpointReason.ForceContinue)
+            {
+                SuspendBreakpoints(BreakpointStatusCodes.SuspendedFromContinue);
+            }
             if (reason == SaveBreakpointReason.Manual)
             {
                 SuspendBreakpoints(BreakpointStatusCodes.SuspendedManually);

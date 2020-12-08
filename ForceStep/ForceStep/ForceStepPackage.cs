@@ -31,6 +31,7 @@ namespace ForceStep
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(ForceStepPackage.PackageGuidString)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionOpening_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideMenuResource("Menus1.ctmenu", 1)]
     //[ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     //[ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
     //[ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
@@ -57,6 +58,7 @@ namespace ForceStep
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await ForceStepOut.InitializeAsync(this);
+            await ForceContinue.InitializeAsync(this);
 
             //m_Dte = (DTE2)await this.GetServiceAsync(typeof(DTE));
             //m_Dte.Events.SolutionEvents.Opened -= new _dispSolutionEvents_OnOpenedHandler(OnSolutionOpened); ;
