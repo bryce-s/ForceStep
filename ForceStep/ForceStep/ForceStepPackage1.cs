@@ -20,6 +20,12 @@ namespace ForceStep
 
         public const string guidImagesString = "c62a1fac-65b1-407e-8309-7b73bb72e06c";
         public static Guid guidImages = new Guid(guidImagesString);
+
+        public const string guidImages1String = "94c3ee55-4e9f-4a9e-a9ad-152bd43b0e1f";
+        public static Guid guidImages1 = new Guid(guidImages1String);
+
+        public const string guidImages2String = "25fede2b-49ac-4fa1-ab28-b2c530908f09";
+        public static Guid guidImages2 = new Guid(guidImages2String);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -28,6 +34,8 @@ namespace ForceStep
     {
         public const int MyMenuGroup = 0x1020;
         public const int ForceContinueId = 0x0100;
+        public const int cmdidForceStep = 0x1021;
+        public const int cmdidForceStepOut = 0x1022;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0002;
         public const int bmpPicSearch = 0x0003;

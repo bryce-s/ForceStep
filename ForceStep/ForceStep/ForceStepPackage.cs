@@ -59,6 +59,8 @@ namespace ForceStep
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await ForceStepOut.InitializeAsync(this);
             await ForceContinue.InitializeAsync(this);
+            await ForceStep.InitializeAsync(this);
+            await ForceStepOut.InitializeAsync(this);
 
             //m_Dte = (DTE2)await this.GetServiceAsync(typeof(DTE));
             //m_Dte.Events.SolutionEvents.Opened -= new _dispSolutionEvents_OnOpenedHandler(OnSolutionOpened); ;

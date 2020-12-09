@@ -3,11 +3,10 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using EnvDTE;
+using ForceStepConstants;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using ForceStepConstants;
 
 namespace ForceStep
 {
@@ -19,12 +18,12 @@ namespace ForceStep
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 4130;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("22f33e59-0867-4f98-ae3c-b2ca2fe0222a");
+        public static readonly Guid CommandSet = new Guid("466498cc-0795-4718-bcb7-98dc3982eb39");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -55,7 +54,6 @@ namespace ForceStep
             get;
             private set;
         }
-        public object MesssageBox { get; private set; }
 
         /// <summary>
         /// Gets the service provider from the owner package.
@@ -80,12 +78,6 @@ namespace ForceStep
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             Instance = new ForceStepOut(package, commandService);
-
-            BreakpointEvents.InitalizeBreakpointEvents(package);
-            
-
-
-
         }
 
         /// <summary>

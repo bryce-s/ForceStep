@@ -3,10 +3,10 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using ForceStepConstants;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using ForceStepConstants;
 
 namespace ForceStep
 {
@@ -18,12 +18,12 @@ namespace ForceStep
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 4129;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("4ae6c79b-555f-44f5-b34d-c18326a8e8d5");
+        public static readonly Guid CommandSet = new Guid("466498cc-0795-4718-bcb7-98dc3982eb39");
 
         /// <summary>
         /// VS Package that provides this command, not null.

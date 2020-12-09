@@ -89,12 +89,8 @@ namespace ForceStep
         /// <param name="e">Event args.</param>
         private void Execute(object sender, EventArgs e)
         {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            BreakpointManager bpm = new BreakpointManager(package: package);
-            bpm.SaveAndSuspendActiveBreakpoints(SaveBreakpointReason.ForceContinue);
 
-            var dte = UtilityMethods.GetDTE(package);
-            dte.Debugger.Go();
+
         }
     }
 }
