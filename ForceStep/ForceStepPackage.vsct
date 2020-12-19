@@ -55,27 +55,40 @@
       <Button guid="guidForceStepPackageCmdSet" id="ForceStepCommandId" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
+		  <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <ButtonText>Invoke ForceStepCommand</ButtonText>
         </Strings>
+
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
-        <Strings>
+		  <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
+		  <Strings>
           <ButtonText>Invoke ForceContinue</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidForceStepOut" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages2" id="bmpPic1" />
-        <Strings>
+		  <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
+		  <Strings>
           <ButtonText>Invoke ForceStepOut</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidForceStepInto" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages3" id="bmpPic1" />
+          <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <ButtonText>Invoke ForceStepInto</ButtonText>
         </Strings>
@@ -83,14 +96,20 @@
       <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyDisable" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages4" id="bmpPic1" />
-        <Strings>
+		  <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
+		  <Strings>
           <ButtonText>Invoke ManuallyDisable</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyEnable" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages5" id="bmpPic1" />
-        <Strings>
+		  <CommandFlag>DynamicVisibility</CommandFlag>
+		  <CommandFlag>DefaultDisabled</CommandFlag>
+		  <CommandFlag>DefaultInvisible</CommandFlag>
+		  <Strings>
           <ButtonText>Invoke ManuallyEnable</ButtonText>
         </Strings>
       </Button>
@@ -104,15 +123,22 @@
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
       <Bitmap guid="guidImages" href="Resources\ForceStepCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages1" href="Resources\ForceContinue.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages2" href="Resources\ForceStepOut.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages3" href="Resources\ForceStepInto.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages4" href="Resources\ManuallyDisable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages5" href="Resources\ManuallyEnable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ForceContinue.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ForceStepOut.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ForceStepInto.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ManuallyDisable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ManuallyEnable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
-  <Symbols>
+
+	<!--<VisibilityConstraints>
+<VisibilityItem guid="guidForceStepPackageCmdSet" id="ForceStepCommandId" context="UICONTEXT_DesignMode" />
+<VisibilityItem guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" context="UICONTEXT_Debugging" />
+	</VisibilityConstraints>-->
+
+
+	<Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidForceStepPackage" value="{d8a1c04d-42ae-4bb7-b053-aae99c2720a4}" />
 

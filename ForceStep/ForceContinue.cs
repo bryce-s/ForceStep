@@ -29,6 +29,10 @@ namespace ForceStep
         /// </summary>
         private readonly AsyncPackage package;
 
+
+        private static bool IsFocused = false;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForceContinue"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
@@ -41,7 +45,11 @@ namespace ForceStep
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
+
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+
+
             commandService.AddCommand(menuItem);
         }
 
@@ -77,6 +85,25 @@ namespace ForceStep
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             Instance = new ForceContinue(package, commandService);
+
+            //if (await package.GetServiceAsync(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
+            //{
+            //    // Create the command for the menu item.
+            //    var menuCommandID1 = new CommandID(package., (int)PkgCmdIDList.FocusOnCurrentThreadCmd);
+            //    var menuCommandID2 = new CommandID(GuidList.guidDebugSingleThreadCmdSet, (int)PkgCmdIDList.SwitchToNextThreadCmd);
+            //    FocusCmd = new OleMenuCommand(FocusOnCurrentThread, menuCommandID1);
+            //    SwitchCmd = new OleMenuCommand(SwitchToNextThread, menuCommandID2);
+            //    FocusCmd.BeforeQueryStatus += OnBeforeQueryStatus;
+            //    SwitchCmd.BeforeQueryStatus += OnBeforeQueryStatus;
+
+            //    commandService.AddCommand(FocusCmd);
+            //    commandService.AddCommand(SwitchCmd);
+
+            //    dte = (EnvDTE.DTE)Package.GetGlobalService(typeof(EnvDTE.DTE));
+            //    OnBeforeQueryStatus(FocusCmd, null);
+            //    OnBeforeQueryStatus(SwitchCmd, null);
+            //}
+
         }
 
         /// <summary>
@@ -98,5 +125,25 @@ namespace ForceStep
             dte.Debugger.Go(WaitForBreakOrEnd: false);
 
         }
+
+        private void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            var dte = UtilityMethods.GetDTE(package);
+            if (sender is OleMenuCommand menuCommand)
+            {
+                if (dte.Mode == EnvDTE.vsIDEMode.vsIDEModeDebug && dte.Debugger.CurrentMode == EnvDTE.dbgDebugMode.dbgBreakMode)
+                {
+                    menuCommand.Enabled = true;
+                    menuCommand.Visible = true;
+                }
+                else
+                {
+                    menuCommand.Enabled = false;
+                    menuCommand.Visible = false;
+                }
+            }
+        }
+
     }
 }

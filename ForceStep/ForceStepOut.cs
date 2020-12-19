@@ -41,7 +41,10 @@ namespace ForceStep
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
+
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+
             commandService.AddCommand(menuItem);
         }
 
@@ -90,12 +93,35 @@ namespace ForceStep
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            var bpm = new BreakpointManager(package);
-            bpm.SaveAndSuspendActiveBreakpoints(ForceStepConstants.SaveBreakpointReason.ForceStepOut);
-
             var dte = UtilityMethods.GetDTE(package);
-            dte.Debugger.StepOut(WaitForBreakOrEnd: false);
+
+            if (dte.Mode == EnvDTE.vsIDEMode.vsIDEModeDebug && dte.Debugger.CurrentMode == EnvDTE.dbgDebugMode.dbgBreakMode)
+            {
+                var bpm = new BreakpointManager(package);
+                bpm.SaveAndSuspendActiveBreakpoints(ForceStepConstants.SaveBreakpointReason.ForceStepOut);
+                dte.Debugger.StepOut(WaitForBreakOrEnd: false);
+            }
 
         }
+
+        private void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            var dte = UtilityMethods.GetDTE(package);
+            if (sender is OleMenuCommand menuCommand)
+            {
+                if (dte.Mode == EnvDTE.vsIDEMode.vsIDEModeDebug && dte.Debugger.CurrentMode == EnvDTE.dbgDebugMode.dbgBreakMode)
+                {
+                    menuCommand.Enabled = true;
+                    menuCommand.Visible = true;
+                }
+                else
+                {
+                    menuCommand.Enabled = false;
+                    menuCommand.Visible = false;
+                }
+            }
+        }
+
     }
 }
