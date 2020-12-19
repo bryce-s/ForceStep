@@ -27,13 +27,13 @@ namespace ForceStep
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(ForceStepPackage.PackageGuidString)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionOpening_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideMenuResource("Menus1.ctmenu", 1)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class ForceStepPackage : AsyncPackage
     {
         /// <summary>
         /// ForceStepPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "9f6adb88-ff31-47ac-ac23-bea65a40ed2b";
+        public const string PackageGuidString = "d8a1c04d-42ae-4bb7-b053-aae99c2720a4";
 
         #region Package Members
 
@@ -49,8 +49,12 @@ namespace ForceStep
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await ForceStep.InitializeAsync(this);
-
+            await ForceStepCommand.InitializeAsync(this);
+            await ForceContinue.InitializeAsync(this);
+            await ForceStepOut.InitializeAsync(this);
+            await ForceStepInto.InitializeAsync(this);
+            await ManuallyDisable.InitializeAsync(this);
+            await ManuallyEnable.InitializeAsync(this);
 
             BreakpointEvents.InitalizeBreakpointEvents(this);
 

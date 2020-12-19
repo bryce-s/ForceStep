@@ -52,18 +52,18 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidForceStepPackageCmdSet" id="ForceContinueId" priority="0x0100" type="Button">
+      <Button guid="guidForceStepPackageCmdSet" id="ForceStepCommandId" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke ForceContinue</ButtonText>
+          <ButtonText>Invoke ForceStepCommand</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidForceStepPackageCmdSet" id="cmdidForceStep" priority="0x0100" type="Button">
+      <Button guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" priority="0x0100" type="Button">
         <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke ForceStep</ButtonText>
+          <ButtonText>Invoke ForceContinue</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidForceStepOut" priority="0x0100" type="Button">
@@ -71,6 +71,27 @@
         <Icon guid="guidImages2" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke ForceStepOut</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidForceStepPackageCmdSet" id="cmdidForceStepInto" priority="0x0100" type="Button">
+        <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke ForceStepInto</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyDisable" priority="0x0100" type="Button">
+        <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages4" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke ManuallyDisable</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyEnable" priority="0x0100" type="Button">
+        <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages5" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke ManuallyEnable</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -82,25 +103,31 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\ForceContinue.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages1" href="Resources\ForceStep.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ForceStepCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages1" href="Resources\ForceContinue.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Resources\ForceStepOut.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages3" href="Resources\ForceStepInto.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages4" href="Resources\ManuallyDisable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages5" href="Resources\ManuallyEnable.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidForceStepPackage" value="{3d735e2d-9fd5-4f6f-91b3-eb8f318b05e1}" />
+    <GuidSymbol name="guidForceStepPackage" value="{d8a1c04d-42ae-4bb7-b053-aae99c2720a4}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidForceStepPackageCmdSet" value="{466498cc-0795-4718-bcb7-98dc3982eb39}">
+    <GuidSymbol name="guidForceStepPackageCmdSet" value="{5499ab04-087c-4366-bd73-ff583b883993}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="ForceContinueId" value="0x0100" />
-      <IDSymbol value="4129" name="cmdidForceStep" />
+      <IDSymbol name="ForceStepCommandId" value="0x0100" />
+      <IDSymbol value="4129" name="cmdidForceContinue" />
       <IDSymbol value="4130" name="cmdidForceStepOut" />
+      <IDSymbol value="4131" name="cmdidForceStepInto" />
+      <IDSymbol value="4132" name="cmdidManuallyDisable" />
+      <IDSymbol value="4133" name="cmdidManuallyEnable" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{c62a1fac-65b1-407e-8309-7b73bb72e06c}">
+    <GuidSymbol name="guidImages" value="{6ac84bf9-c454-4e6d-b142-686e733cd0e9}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
@@ -109,7 +136,7 @@
       <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{94c3ee55-4e9f-4a9e-a9ad-152bd43b0e1f}" name="guidImages1">
+    <GuidSymbol value="{890df36a-4519-40e5-a2fe-239a622ef73d}" name="guidImages1">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
@@ -118,7 +145,34 @@
       <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{25fede2b-49ac-4fa1-ab28-b2c530908f09}" name="guidImages2">
+    <GuidSymbol value="{8c2ae99c-7371-4407-b7b6-5ec4e2f6ac42}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{bd82b7a0-b949-45e6-968d-48b3148c266c}" name="guidImages3">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{6d07e6cb-f1b0-4ac5-8795-f7d3a1809214}" name="guidImages4">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{2223fe99-d7b8-4426-8082-47423371186f}" name="guidImages5">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

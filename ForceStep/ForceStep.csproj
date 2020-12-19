@@ -10,11 +10,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{EC2BF75C-D024-4153-A3EE-4C225207E087}</ProjectGuid>
+    <ProjectGuid>{83C37665-870D-4463-A70E-FD7B0331BAB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ForceStep</RootNamespace>
-    <AssemblyName>ForceStep</AssemblyName>
+    <AssemblyName>b</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -47,16 +47,18 @@
   <ItemGroup>
     <Compile Include="BreakpointEvents.cs" />
     <Compile Include="BreakpointManager.cs" />
-    <Compile Include="DteEventHandlers.cs" />
     <Compile Include="ForceContinue.cs" />
-    <Compile Include="ForceStep.cs" />
+    <Compile Include="ForceStepCommand.cs" />
     <Compile Include="ForceStepConstants.cs" />
+    <Compile Include="ForceStepInto.cs" />
     <Compile Include="ForceStepOut.cs" />
     <Compile Include="ForceStepPackage1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ForceStepPackage.vsct</DependentUpon>
     </Compile>
+    <Compile Include="ManuallyDisable.cs" />
+    <Compile Include="ManuallyEnable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ForceStepPackage.cs" />
     <Compile Include="UtilityMethods.cs" />
@@ -82,14 +84,17 @@
   <ItemGroup>
     <VSCTCompile Include="ForceStepPackage.vsct">
       <Generator>VsctGenerator</Generator>
-      <ResourceName>Menus1.ctmenu</ResourceName>
+      <ResourceName>Menus.ctmenu</ResourceName>
       <LastGenOutput>ForceStepPackage1.cs</LastGenOutput>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\ForceContinue.png" />
-    <Content Include="Resources\ForceStep.png" />
+    <Content Include="Resources\ForceStepCommand.png" />
+    <Content Include="Resources\ForceStepInto.png" />
     <Content Include="Resources\ForceStepOut.png" />
+    <Content Include="Resources\ManuallyDisable.png" />
+    <Content Include="Resources\ManuallyEnable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -34,7 +34,8 @@ namespace ForceStepConstants
         Manual = 0,
         ForceStep = 1,
         ForceStepOut = 2,
-        ForceContinue = 3,
+        ForceStepInto = 3,
+        ForceContinue = 4,
     }
 
 }

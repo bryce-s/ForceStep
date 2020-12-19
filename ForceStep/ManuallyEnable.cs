@@ -17,12 +17,12 @@ namespace ForceStep
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 4133;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("124f2ad1-5987-484d-9140-18f9ece76ccd");
+        public static readonly Guid CommandSet = new Guid("5499ab04-087c-4366-bd73-ff583b883993");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -90,7 +90,7 @@ namespace ForceStep
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            BreakpointManager bpm = new BreakpointManager(package);
+            var bpm = new BreakpointManager(package);
             bpm.RestoreSavedBreakpoints(ForceStepConstants.SaveBreakpointReason.Manual);
 
         }

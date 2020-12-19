@@ -17,12 +17,12 @@ namespace ForceStep
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 4132;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("f4ade1dc-1bbd-4220-97a0-f16309374b85");
+        public static readonly Guid CommandSet = new Guid("5499ab04-087c-4366-bd73-ff583b883993");
 
         /// <summary>
         /// VS Package that provides this command, not null.

@@ -3,7 +3,6 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using ForceStepConstants;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -13,17 +12,17 @@ namespace ForceStep
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class ForceStep
+    internal sealed class ForceStepCommand
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 4129;
+        public const int CommandId = 0x0100;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("466498cc-0795-4718-bcb7-98dc3982eb39");
+        public static readonly Guid CommandSet = new Guid("5499ab04-087c-4366-bd73-ff583b883993");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -31,12 +30,12 @@ namespace ForceStep
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ForceStep"/> class.
+        /// Initializes a new instance of the <see cref="ForceStepCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private ForceStep(AsyncPackage package, OleMenuCommandService commandService)
+        private ForceStepCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -49,7 +48,7 @@ namespace ForceStep
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static ForceStep Instance
+        public static ForceStepCommand Instance
         {
             get;
             private set;
@@ -72,12 +71,12 @@ namespace ForceStep
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in ForceStep's constructor requires
+            // Switch to the main thread - the call to AddCommand in ForceStepCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new ForceStep(package, commandService);
+            Instance = new ForceStepCommand(package, commandService);
         }
 
         /// <summary>
@@ -91,11 +90,13 @@ namespace ForceStep
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            BreakpointManager bpm = new BreakpointManager(package);
-            bpm.SaveAndSuspendActiveBreakpoints(SaveBreakpointReason.ForceStep);
+            var bpm = new BreakpointManager(package);
+            bpm.SaveAndSuspendActiveBreakpoints(ForceStepConstants.SaveBreakpointReason.ForceStep);
 
             var dte = UtilityMethods.GetDTE(package);
             dte.Debugger.StepOver(WaitForBreakOrEnd: false);
+
+
         }
     }
 }

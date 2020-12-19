@@ -17,12 +17,12 @@ namespace ForceStep
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 4131;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("069f40db-8e3b-48fd-b3c3-994fc473df56");
+        public static readonly Guid CommandSet = new Guid("5499ab04-087c-4366-bd73-ff583b883993");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -89,17 +89,13 @@ namespace ForceStep
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "ForceStepInto";
 
-            // Show a message box to prove we were here
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                message,
-                title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            var bpm = new BreakpointManager(package);
+            bpm.SaveAndSuspendActiveBreakpoints(ForceStepConstants.SaveBreakpointReason.ForceStepInto);
+
+            var dte = UtilityMethods.GetDTE(package);
+            dte.Debugger.StepInto(WaitForBreakOrEnd: false);
+
         }
     }
 }
