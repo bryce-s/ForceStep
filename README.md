@@ -1,6 +1,7 @@
 # Force Step - Visual Studio Extension 
 
-[![Build status](https://ci.appveyor.com/api/projects/status/auuht1u7eyasg65u?svg=true)](https://ci.appveyor.com/api/projects/status/ebifkut73l56lqwl/branch/main?svg=true)
+[![Build status](https://ci.appveyor.com/api/projects/status/ebifkut73l56lqwl/branch/main?svg=true
+)](https://ci.appveyor.com/api/projects/status/ebifkut73l56lqwl/branch/main?svg=true)
 <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg" />
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-success.svg?cacheSeconds=2592000" />
 
