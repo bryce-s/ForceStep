@@ -56,6 +56,10 @@ namespace ForceStep
             m_debuggerEvents.OnEnterBreakMode += this.OnEnterBreakMode;
             m_debuggerEvents.OnEnterDesignMode += this.OnEnterDesignMode;
 
+            m_solutionEvents = dte.Events.SolutionEvents;
+            m_solutionEvents.BeforeClosing += OnBeforeClosing;
+            
+
             SolutionOpenedImpl();
         }
 
@@ -105,6 +109,13 @@ namespace ForceStep
             bpm.DisableSuspendedFromOperationBreakpoints();
         }
 
+        private void OnBeforeClosing()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            BreakpointManager bpm = new BreakpointManager(package: m_package);
+            bpm.RestoreSavedBreakpoints(SaveBreakpointReason.Manual);
+        }
+        
 
         #region Breakpoints
 

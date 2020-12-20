@@ -48,6 +48,7 @@ namespace ForceStep
         public const int cmdidForceStepInto = 0x1023;
         public const int cmdidManuallyDisable = 0x1024;
         public const int cmdidManuallyEnable = 0x1025;
+        public const int DisableEnableButtons = 0x1026;
         public const int bmpPic1 = 0x0001;
         public const int bmpPic2 = 0x0001;
         public const int bmpPic3 = 0x0001;

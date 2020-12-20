@@ -41,10 +41,16 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
+		<Group guid="guidForceStepPackageCmdSet" id="DisableEnableButtons" priority="0x0901">
+			<Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD" />
+		</Group>
       <Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
 			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_TOOLBAR" />
 	  </Group>
 		<Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
+			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_MENU"/>
+		</Group>
+	    <Group guid="guidForceStepPackageCmdSet" id="DisableEnableButtons" priority="0x0901">
 			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_MENU"/>
 		</Group>
     </Groups>
@@ -102,7 +108,7 @@
         </Strings>
       </Button>
       <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyDisable" priority="0x099" type="Button">
-        <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
+        <Parent guid="guidForceStepPackageCmdSet" id="DisableEnableButtons" />
         <Icon guid="guidImages4" id="bmpPic5" />
 		  <CommandFlag>DynamicVisibility</CommandFlag>
 		  <CommandFlag>DefaultDisabled</CommandFlag>
@@ -110,8 +116,8 @@
           <ButtonText>Disable and Save Breakpoints</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyEnable" priority="0x0100" type="Button">
-        <Parent guid="guidForceStepPackageCmdSet" id="MyMenuGroup" />
+	    <Button guid="guidForceStepPackageCmdSet" id="cmdidManuallyEnable" priority="0x0100" type="Button">
+				<Parent guid="guidForceStepPackageCmdSet" id="DisableEnableButtons" />
         <Icon guid="guidImages5" id="bmpPic6" />
 		  <CommandFlag>DynamicVisibility</CommandFlag>
 		  <CommandFlag>DefaultDisabled</CommandFlag>
@@ -137,18 +143,6 @@
     </Bitmaps>
   </Commands>
 
-	<!--<KeyBindings>
-		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" editor="guidVSStd97"
-					key1="h" mod1="Control Alt"></KeyBinding>
-		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceStepInto"
-                	key1="l" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
-		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceStepOut"
-				    key1="f" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
-		<KeyBinding guid="guidForceStepPackageCmdSet" id="ForceStepCommandId"
-                    key1="k" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
-	</KeyBindings>-->
-
-
 	<Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidForceStepPackage" value="{d8a1c04d-42ae-4bb7-b053-aae99c2720a4}" />
@@ -162,6 +156,7 @@
       <IDSymbol value="4131" name="cmdidForceStepInto" />
       <IDSymbol value="4132" name="cmdidManuallyDisable" />
       <IDSymbol value="4133" name="cmdidManuallyEnable" />
+	  <IDSymbol name="DisableEnableButtons" value="4134"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{6ac84bf9-c454-4e6d-b142-686e733cd0e9}">
