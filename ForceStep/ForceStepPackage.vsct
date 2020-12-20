@@ -42,9 +42,8 @@
          must be a menu. -->
     <Groups>
       <Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
-			<Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD" />
+			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_TOOLBAR" />
 	  </Group>
-
 		<Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
 			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_MENU"/>
 		</Group>
@@ -148,12 +147,6 @@
 		<KeyBinding guid="guidForceStepPackageCmdSet" id="ForceStepCommandId"
                     key1="k" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
 	</KeyBindings>-->
-
-	<VisibilityConstraints>
-		<VisibilityItem guid="guidDebugSingleThreadCmdSet" id="FocusOnCurrentThreadCmd" context="UICONTEXT_NoSolution" />
-		<VisibilityItem guid="guidDebugSingleThreadCmdSet" id="SwitchToNextThreadCmd" context="UICONTEXT_NoSolution" />
-	</VisibilityConstraints>
-	
 
 
 	<Symbols>
