@@ -30,9 +30,6 @@ namespace ForceStep
         private readonly AsyncPackage package;
 
 
-        private static bool IsFocused = false;
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ForceContinue"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
@@ -48,7 +45,6 @@ namespace ForceStep
             var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
 
             menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
-
 
             commandService.AddCommand(menuItem);
         }
@@ -85,24 +81,6 @@ namespace ForceStep
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             Instance = new ForceContinue(package, commandService);
-
-            //if (await package.GetServiceAsync(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
-            //{
-            //    // Create the command for the menu item.
-            //    var menuCommandID1 = new CommandID(package., (int)PkgCmdIDList.FocusOnCurrentThreadCmd);
-            //    var menuCommandID2 = new CommandID(GuidList.guidDebugSingleThreadCmdSet, (int)PkgCmdIDList.SwitchToNextThreadCmd);
-            //    FocusCmd = new OleMenuCommand(FocusOnCurrentThread, menuCommandID1);
-            //    SwitchCmd = new OleMenuCommand(SwitchToNextThread, menuCommandID2);
-            //    FocusCmd.BeforeQueryStatus += OnBeforeQueryStatus;
-            //    SwitchCmd.BeforeQueryStatus += OnBeforeQueryStatus;
-
-            //    commandService.AddCommand(FocusCmd);
-            //    commandService.AddCommand(SwitchCmd);
-
-            //    dte = (EnvDTE.DTE)Package.GetGlobalService(typeof(EnvDTE.DTE));
-            //    OnBeforeQueryStatus(FocusCmd, null);
-            //    OnBeforeQueryStatus(SwitchCmd, null);
-            //}
 
         }
 

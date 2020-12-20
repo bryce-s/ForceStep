@@ -99,7 +99,6 @@ namespace ForceStep
             {
                 var bpm = new BreakpointManager(package);
                 bpm.SaveAndSuspendActiveBreakpoints(ForceStepConstants.SaveBreakpointReason.ForceStepInto);
-
                 dte.Debugger.StepInto(WaitForBreakOrEnd: false);
             }
         }

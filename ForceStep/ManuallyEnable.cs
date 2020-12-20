@@ -41,8 +41,11 @@ namespace ForceStep
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
             commandService.AddCommand(menuItem);
+
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+
         }
 
         /// <summary>
@@ -92,7 +95,18 @@ namespace ForceStep
 
             var bpm = new BreakpointManager(package);
             bpm.RestoreSavedBreakpoints(ForceStepConstants.SaveBreakpointReason.Manual);
-
         }
+
+        private void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            var dte = UtilityMethods.GetDTE(package);
+            if (sender is OleMenuCommand menuCommand)
+            {
+                var bpm = new BreakpointManager(package);
+                menuCommand.Enabled = !bpm.HasSuspendedBreakpoints();
+            }
+        }
+
     }
 }

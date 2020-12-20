@@ -57,7 +57,6 @@ namespace ForceStep
             await ManuallyEnable.InitializeAsync(this);
 
             BreakpointEvents.InitalizeBreakpointEvents(this);
-
         }
 
         #endregion

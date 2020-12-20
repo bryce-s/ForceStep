@@ -53,6 +53,7 @@ namespace ForceStep
                 }
             }
         }
+        
 
         private void RestoreBreakpointsFromSuspension(string type)
         {
@@ -62,12 +63,31 @@ namespace ForceStep
 
             foreach (EnvDTE.Breakpoint bp in dte.Debugger.Breakpoints)
             {
-                if (bp.Tag == type)
+
+                if (bp.Tag == type || (type == BreakpointStatusCodes.SuspendedManually && 
+                    BreakpointStatusCodes.SuspendedFromOperation().Contains(bp.Tag)))
                 {
                     bp.Tag = BreakpointStatusCodes.Active;
                     bp.Enabled = true;
+                } 
+            }
+        }
+
+
+        public bool HasSuspendedBreakpoints()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            DTE dte = UtilityMethods.GetDTE(m_package);
+
+            foreach (EnvDTE.Breakpoint bp in dte.Debugger.Breakpoints)
+            {
+                if (bp.Tag != ForceStepConstants.BreakpointStatusCodes.Active)
+                {
+                    return false;
                 }
             }
+            return true;
         }
 
 
@@ -80,6 +100,10 @@ namespace ForceStep
             if (reason == SaveBreakpointReason.ForceStepOut)
             {
                 SuspendBreakpoints(BreakpointStatusCodes.SuspendedFromStepOut);
+            }
+            if (reason == SaveBreakpointReason.ForceStepInto)
+            {
+                SuspendBreakpoints(BreakpointStatusCodes.SuspendedFromStepInto);
             }
             if (reason == SaveBreakpointReason.ForceContinue)
             {
@@ -105,7 +129,16 @@ namespace ForceStep
             {
                 RestoreBreakpointsFromSuspension(BreakpointStatusCodes.SuspendedFromStepOut);
             }
+            if (reason == SaveBreakpointReason.ForceStepInto)
+            {
+                RestoreBreakpointsFromSuspension(BreakpointStatusCodes.SuspendedFromStepInto);
+            }
+            if (reason == SaveBreakpointReason.ForceContinue)
+            {
+                RestoreBreakpointsFromSuspension(BreakpointStatusCodes.SuspendedFromContinue);
+            }
         }
 
     }
 }
+

@@ -49,10 +49,10 @@ namespace ForceStep
         public const int cmdidManuallyDisable = 0x1024;
         public const int cmdidManuallyEnable = 0x1025;
         public const int bmpPic1 = 0x0001;
-        public const int bmpPic2 = 0x0002;
-        public const int bmpPicSearch = 0x0003;
-        public const int bmpPicX = 0x0004;
-        public const int bmpPicArrows = 0x0005;
-        public const int bmpPicStrikethrough = 0x0006;
+        public const int bmpPic2 = 0x0001;
+        public const int bmpPic3 = 0x0001;
+        public const int bmpPic4 = 0x0001;
+        public const int bmpPic5 = 0x0001;
+        public const int bmpPic6 = 0x0001;
     }
 }

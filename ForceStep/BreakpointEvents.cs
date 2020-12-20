@@ -56,8 +56,6 @@ namespace ForceStep
             m_debuggerEvents.OnEnterBreakMode += this.OnEnterBreakMode;
             m_debuggerEvents.OnEnterDesignMode += this.OnEnterDesignMode;
 
-            // m_solutionEvents = dte.Events.SolutionEvents;
-            // m_solutionEvents.Opened += this.OnSolutionOpened;
             SolutionOpenedImpl();
         }
 
@@ -79,7 +77,7 @@ namespace ForceStep
             {
                 foreach (Breakpoint bp in m_Dte.Debugger.Breakpoints)
                 {
-                    if (bp.Tag == BreakpointStatusCodes.SuspendedFromStep)
+                    if (BreakpointStatusCodes.SuspendedFromOperation().Contains(bp.Tag))
                     {
                         bp.Enabled = true;
                         bp.Tag = "";

@@ -89,10 +89,16 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\DisableBreakpoints.png" />
+    <Content Include="Resources\EnableBreakpoints.png" />
     <Content Include="Resources\ForceContinue.png" />
+    <Content Include="Resources\ForceContinueArrow.png" />
     <Content Include="Resources\ForceStepCommand.png" />
     <Content Include="Resources\ForceStepInto.png" />
     <Content Include="Resources\ForceStepOut.png" />
+    <Content Include="Resources\forceStepOver.png" />
+    <Content Include="Resources\fStepInto.png" />
+    <Content Include="Resources\fstepOut.png" />
     <Content Include="Resources\ManuallyDisable.png" />
     <Content Include="Resources\ManuallyEnable.png" />
   </ItemGroup>
