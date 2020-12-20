@@ -17,6 +17,11 @@
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
   <Extern href="stdidcmd.h" />
 
+	
+<Extern href ="VSDbgCmd.h"/>
+<Extern href ="VsDebugGuids.h"/>
+	
+	
   <!--This header contains the command ids for the menus provided by the shell. -->
   <Extern href="vsshlids.h" />
 
@@ -38,7 +43,11 @@
     <Groups>
       <Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
 			<Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD" />
-      </Group>
+	  </Group>
+
+		<Group guid="guidForceStepPackageCmdSet" id="MyMenuGroup" priority="0x0901">
+			<Parent guid="guidVSDebugGroup" id="IDM_DEBUG_MENU"/>
+		</Group>
     </Groups>
 
     <!--Buttons section. -->
@@ -129,11 +138,22 @@
     </Bitmaps>
   </Commands>
 
+	<!--<KeyBindings>
+		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" editor="guidVSStd97"
+					key1="h" mod1="Control Alt"></KeyBinding>
+		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceStepInto"
+                	key1="l" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
+		<KeyBinding guid="guidForceStepPackageCmdSet" id="cmdidForceStepOut"
+				    key1="f" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
+		<KeyBinding guid="guidForceStepPackageCmdSet" id="ForceStepCommandId"
+                    key1="k" mod1="Control Alt" editor="guidVSStd97"></KeyBinding>
+	</KeyBindings>-->
 
-	<!--<VisibilityConstraints>
-<VisibilityItem guid="guidForceStepPackageCmdSet" id="ForceStepCommandId" context="UICONTEXT_DesignMode" />
-<VisibilityItem guid="guidForceStepPackageCmdSet" id="cmdidForceContinue" context="UICONTEXT_Debugging" />
-	</VisibilityConstraints>-->
+	<VisibilityConstraints>
+		<VisibilityItem guid="guidDebugSingleThreadCmdSet" id="FocusOnCurrentThreadCmd" context="UICONTEXT_NoSolution" />
+		<VisibilityItem guid="guidDebugSingleThreadCmdSet" id="SwitchToNextThreadCmd" context="UICONTEXT_NoSolution" />
+	</VisibilityConstraints>
+	
 
 
 	<Symbols>
