@@ -11,7 +11,7 @@ Download this extension from the (VS Gallery). See the [changelog](CHANGELOG.md)
 
 ## Features
 
-![](Media/ForceStepDemonstration.gif "Force Step Demonstration")
+![](media/ForceStepDemonstration.gif "Force Step Demonstration")
 
 This extension adds six new breakpoint-related commands to Visual Studio: 
 
@@ -24,7 +24,7 @@ This extension adds six new breakpoint-related commands to Visual Studio:
 
 The commands are visible under the debug menu while paused on a breakpoint. They can also be found to the right of Visual Studio's normal, blue step controls.
 
-![](Media/ForceStepIcons.jpg "Force Step Icons")
+![](media/ForceStepIcons.jpg "Force Step Icons")
 
 ## Usage
 
