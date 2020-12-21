@@ -7,7 +7,7 @@
 
 Step over and skip breakpoints.
 
-Download this extension from the [Visual Studio extension marketplace](https://marketplace.visualstudio.com/items?itemName=BryceSmith.ForceStep). See the [changelog](CHANGELOG.md) for release notes.
+Download this extension from the [Visual Studio extension marketplace](https://marketplace.visualstudio.com/items?itemName=BryceSmith.ForceStep).
 
 ## Features
 
