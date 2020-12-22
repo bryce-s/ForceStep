@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,14 @@ namespace ForceStep
 
             System.IServiceProvider serviceProvider = package as System.IServiceProvider;
             return (DTE)serviceProvider.GetService(typeof(DTE));
+        }
+
+
+        public static MenuCommandService GetOleMenuCommandService(AsyncPackage package)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            System.IServiceProvider serviceProvider = package as System.IServiceProvider;
+            return (MenuCommandService) serviceProvider.GetService(typeof(OleMenuCommandService));
         }
 
 

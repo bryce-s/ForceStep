@@ -3,11 +3,11 @@
     <Metadata>
         <Identity Id="ForceStep.04530778-973f-4c7c-98e4-7a0fed27afff" Version="1.0" Language="en-US" Publisher="Bryce Smith" />
         <DisplayName>ForceStep</DisplayName>
-        <Description xml:space="preserve">Step and skip any breakpoints.</Description>
+        <Description xml:space="preserve">Step over and skip breakpoints.</Description>
         <MoreInfo>https://github.com/bryce-s/ForceStep</MoreInfo>
         <License>Resources\LICENSE.TXT</License>
-        <Icon>Resources\Icon.png</Icon>
-        <PreviewImage>Resources\Preview.png</PreviewImage>
+        <Icon>Icon.png</Icon>
+        <PreviewImage>Preview.png</PreviewImage>
         <Tags>breakpoint, breakpoints, toggle, skip, step, into, over, out</Tags>
     </Metadata>
     <Installation>

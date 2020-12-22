@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using System.Windows.Forms;
 using ForceStepConstants;
+using System.ComponentModel.Design;
 
 namespace ForceStep
 {
@@ -18,10 +19,10 @@ namespace ForceStep
         public static SolutionEvents m_solutionEvents;
         private static AsyncPackage m_package;
 
-        /// <summary>
-        /// get the singleton instance of the breakpoint events object
-        /// </summary>
-        public BreakpointEvents BreakpointEventsState
+        public List<CommandID> m_commandIDs;
+
+
+        public static BreakpointEvents BreakpointEventsState
         {
             get
             {
@@ -33,10 +34,6 @@ namespace ForceStep
             }
         }
 
-        /// <summary>
-        /// workaround to ensure we start with a package
-        /// </summary>
-        /// <param name="package"></param>
         public static void InitalizeBreakpointEvents(AsyncPackage package)
         {
             m_Instance = new BreakpointEvents(dte: UtilityMethods.GetDTE(package));
@@ -63,20 +60,13 @@ namespace ForceStep
             SolutionOpenedImpl();
         }
 
-        // add the following Event handler code   
         public static void StartEvents(DTE dte)
         {
             System.Windows.Forms.MessageBox.Show("Events are attached.");
         }
 
-        /// <summary>
-        /// consumer for Dte.Events.OnEnterBreakMode
-        /// </summary>
-        /// <param name="reason"></param>
-        /// <param name="executionAction"></param>
         private void OnEnterBreakMode(dbgEventReason reason, ref dbgExecutionAction executionAction)
         {
-            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             if (reason == dbgEventReason.dbgEventReasonStep)
             {
                 foreach (Breakpoint bp in m_Dte.Debugger.Breakpoints)
@@ -88,6 +78,12 @@ namespace ForceStep
                     }
                 }
             }
+        }
+
+        private void EnableMenuCommand(MenuCommand menuCommand)
+        {
+            menuCommand.Enabled = true;
+            menuCommand.Visible = true;
         }
 
         private void OnSolutionOpened()

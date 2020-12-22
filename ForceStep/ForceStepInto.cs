@@ -3,6 +3,7 @@ using System.ComponentModel.Design;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -29,6 +30,11 @@ namespace ForceStep
         /// </summary>
         private readonly AsyncPackage package;
 
+
+        public static DebuggerEvents m_debuggerEvents;
+        private OleMenuCommand m_Command;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForceStepInto"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
@@ -43,7 +49,14 @@ namespace ForceStep
             var menuCommandID = new CommandID(CommandSet, CommandId);
             var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
 
+            var dte = UtilityMethods.GetDTE(package);
+            m_debuggerEvents = dte.Events.DebuggerEvents;
+            m_debuggerEvents.OnEnterBreakMode += OnEnterBreakMode;
+
+
             menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+
+            m_Command = menuItem;
 
             commandService.AddCommand(menuItem);
         }
@@ -102,8 +115,6 @@ namespace ForceStep
                 dte.Debugger.StepInto(WaitForBreakOrEnd: false);
             }
         }
-
-
         private void OnBeforeQueryStatus(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -121,6 +132,12 @@ namespace ForceStep
                     menuCommand.Visible = false;
                 }
             }
+        }
+
+        private void OnEnterBreakMode(dbgEventReason reason, ref dbgExecutionAction executionAction)
+        {
+            m_Command.Enabled = true;
+            m_Command.Visible = true;
         }
 
     }
