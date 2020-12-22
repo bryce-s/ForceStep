@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="ForceStep.04530778-973f-4c7c-98e4-7a0fed27afff" Version="1.0" Language="en-US" Publisher="Bryce Smith" />
+        <Identity Id="ForceStep.04530778-973f-4c7c-98e4-7a0fed27afff" Version="1.01" Language="en-US" Publisher="Bryce Smith" />
         <DisplayName>ForceStep</DisplayName>
         <Description xml:space="preserve">Step over and skip breakpoints.</Description>
         <MoreInfo>https://github.com/bryce-s/ForceStep</MoreInfo>
