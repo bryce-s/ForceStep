@@ -46,7 +46,7 @@ namespace ForceStep
 
             foreach (EnvDTE.Breakpoint bp in dte.Debugger.Breakpoints)
             {
-                if (bp.Enabled)
+                if (bp.Enabled && ((EnvDTE80.Breakpoint2)bp).BreakWhenHit)
                 {
                     bp.Tag = statusCode;
                     bp.Enabled = false;
