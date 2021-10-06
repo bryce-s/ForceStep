@@ -67,6 +67,7 @@ namespace ForceStep
 
         private void OnEnterBreakMode(dbgEventReason reason, ref dbgExecutionAction executionAction)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (reason == dbgEventReason.dbgEventReasonStep)
             {
                 foreach (Breakpoint bp in m_Dte.Debugger.Breakpoints)
